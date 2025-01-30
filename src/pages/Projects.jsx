@@ -11,7 +11,7 @@ const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // عدد العناصر في كل صفحة
-  const projectsPerPage = 6;
+  const projectsPerPage = 3;
 
   // إضافة مشروع جديد
   const handleAddProject = (e) => {

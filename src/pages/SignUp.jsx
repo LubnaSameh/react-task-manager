@@ -42,7 +42,7 @@ const SignUp = () => {
       <div className="absolute -bottom-0 -right-0 w-64 h-64 bg-purple-300 opacity-30 rounded-full animate-plus"></div>
       <div className="absolute -top-0 -right-0 w-72 h-72 bg-pink-700 opacity-25 rounded-full animate-circle"></div>
 
-      <div className="bg-gray-900 mt-12 p-8 rounded-lg opacity-90 shadow-lg w-full max-w-sm">
+      <div className="bg-gray-900 mt-12 mx-3 p-8 rounded-lg opacity-90 shadow-lg w-full max-w-sm">
         <h2 className="text-2xl font-bold text-center mb-4 text-yellow-400">Sign Up</h2>
         <form onSubmit={handleSignUp}>
           <div className="mb-4">

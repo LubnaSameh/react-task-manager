@@ -27,7 +27,7 @@ const Login = () => {
       <div className="absolute -bottom-0 -right-0 w-64 h-64 bg-purple-300 opacity-30 rounded-full animate-plus"></div>
       <div className="absolute -top-0 -right-0 w-72 h-72 bg-pink-700 opacity-25 rounded-full animate-circle"></div>
 
-      <div className="bg-gray-800 p-8 rounded-lg opacity-90 shadow-lg w-full max-w-sm">
+      <div className="bg-gray-800 mx-3 p-8 rounded-lg opacity-90 shadow-lg w-full max-w-sm">
         <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
