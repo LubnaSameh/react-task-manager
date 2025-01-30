@@ -1,28 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"; 
 import { motion } from "framer-motion";
 import { useTheme } from "../context/themeContext";
-import { useAuth, getDisplayName } from "../context"; // <-- تأكد إنك بتستورد useAuth من الملف المجمِّع أو مباشرةً من authContext
+import { useAuth , getDisplayName} from "../context"; // <-- تأكد إنك بتستورد useAuth من الملف المجمِّع أو مباشرةً من authContext
 import { FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth(); // اسحب حالة المستخدم ودالة الخروج
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+  const navbarRef = useRef(null);
 
-  // Close the mobile menu when clicking outside
+  // Close the mobile menu if clicked outside of navbar
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
         setIsMenuOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
+    // Cleanup the event listener on component unmount
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -34,6 +35,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
+      ref={navbarRef}  // Add the ref here
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -62,7 +64,7 @@ const Navbar = () => {
             >
               <NavLink
                 to={item.path}
-                className="hover:text-yellow-300 transition duration-200"
+                className="hover:text-yellow-300  transition duration-200"
                 style={({ isActive }) => ({
                   color: isActive ? "yellow" : "",
                   textDecoration: isActive ? "underline" : "",
@@ -101,6 +103,7 @@ const Navbar = () => {
               </motion.button>
             </>
           ) : (
+            // لو لسه مش عامل Login
             <>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -167,7 +170,6 @@ const Navbar = () => {
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
         <motion.div
-          ref={menuRef}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
@@ -185,6 +187,7 @@ const Navbar = () => {
               transition={{ duration: 0.2, ease: "easeInOut" }}
               className="block text-lg font-medium transition duration-200 font-sans"
             >
+              {/* NavLink مع دالة تحدد الكلاس حسب isActive */}
               <NavLink
                 to={item.path}
                 onClick={() => {
@@ -207,8 +210,9 @@ const Navbar = () => {
             {user ? (
               <>
                 <div className="text-center font-semibold">
-                  Welcome, {user.email}
-                </div>
+                Welcome, {getDisplayName(user.email)}
+              </div>
+
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -231,11 +235,9 @@ const Navbar = () => {
                     to="/login"
                     onClick={() => setIsMenuOpen(false)}
                     className={({ isActive }) =>
-                      `block text-center font-medium px-4 py-2 rounded-lg transition duration-200 ${
-                        isActive
-                          ? "bg-gray-600 text-yellow-300 underline"
-                          : "bg-gray-800 hover:bg-gray-600 text-white"
-                      }`
+                      `block text-center font-medium px-4 py-2 rounded-lg transition duration-200 
+                       dark:bg-gray-900 dark:hover:bg-gray-700 
+                       ${isActive ? "bg-gray-600 text-yellow-300 underline" : "bg-gray-800 hover:bg-gray-600 text-white"}`
                     }
                   >
                     Login
@@ -250,11 +252,8 @@ const Navbar = () => {
                     to="/signup"
                     onClick={() => setIsMenuOpen(false)}
                     className={({ isActive }) =>
-                      `block text-center font-medium px-4 py-2 rounded-lg transition duration-200 ${
-                        isActive
-                          ? "bg-yellow-500 text-gray-900 underline"
-                          : "bg-yellow-400 text-gray-800 hover:bg-yellow-300"
-                      }`
+                      `block text-center font-medium px-4 py-2 rounded-lg transition duration-200 
+                       ${isActive ? "bg-yellow-500 text-gray-900 underline" : "bg-yellow-400 text-gray-800 hover:bg-yellow-300"}`
                     }
                   >
                     Sign Up
