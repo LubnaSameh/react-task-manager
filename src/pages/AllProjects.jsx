@@ -23,7 +23,7 @@ function ProjectItem({ project, tasks, index, toggleTaskStatus }) {
         ease: "easeOut",
       }}
       className={`bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800
-                  dark:from-gray-800 dark:via-gray-800 dark:to-gray-800
+                  dark:from-gray-800 dark:via-gray-800 dark:to-gray-800 
                   rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500 
                   flex flex-col p-6 h-[${CARD_HEIGHT}px]
                   z-10 relative // نجعلها نسبية وعليها z-10 لتكون فوق خلفية الدوائر
@@ -175,7 +175,7 @@ export default function AllProjects() {
 
   return (
     <div
-      className="relative min-h-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700
+      className="relative  flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700
                  dark:from-gray-700 dark:via-gray-700 dark:to-gray-700
                  text-white pt-24 pb-10 px-6 overflow-hidden"
     >
