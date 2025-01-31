@@ -34,15 +34,17 @@ const ProjectCard = ({ index, project, onDelete, onEdit }) => {
       transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.3 }}
       className="relative bg-gradient-to-br from-gray-600 via-gray-600 to-gray-700 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-500 hover:scale-105 transition-transform duration-300 overflow-hidden group"
     >
-      {/* زر الحذف */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => onDelete(id)}
-        className="absolute top-5 right-4 text-yellow-400 rounded-full w-10 h-10 flex items-center justify-center transition cursor-pointer"
-      >
-        <MdDelete className="text-xl" />
-      </motion.button>
+      {/* زر الحذف - يظهر فقط عندما لا تكون البطاقة في وضع التعديل */}
+      {!isEditing && (
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => onDelete(id)}
+          className="absolute top-5 right-4 text-yellow-400 rounded-full w-10 h-10 flex items-center justify-center transition cursor-pointer"
+        >
+          <MdDelete className="text-xl" />
+        </motion.button>
+      )}
 
       {isEditing ? (
         <div className="mt-4 p-4 bg-gray-800 rounded-lg">

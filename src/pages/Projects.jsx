@@ -9,6 +9,7 @@ const Projects = () => {
   const [newProject, setNewProject] = useState({ title: "", description: "" });
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [editingProjectId, setEditingProjectId] = useState(null); // حالة لتتبع البطاقة التي يتم تعديلها
 
   // عدد العناصر في كل صفحة
   const projectsPerPage = 3;
@@ -38,7 +39,7 @@ const Projects = () => {
       description: updatedData.description?.trim() || "No description available",
     });
 
-    setNewProject({ title: "", description: "" });
+    setEditingProjectId(null); // الخروج من وضع التعديل بعد الحفظ
     toast.success("Project updated successfully!");
   };
 
@@ -135,6 +136,8 @@ const Projects = () => {
               project={project}
               onDelete={() => handleDeleteProject(project.id)}
               onEdit={(id, updatedData) => handleEditProject(id, updatedData)}
+              isEditing={editingProjectId === project.id} // تمرير حالة التعديل للبطاقة
+              onEditToggle={() => setEditingProjectId(project.id)} // تفعيل وضع التعديل
             />
           ))}
         </div>
