@@ -1,6 +1,7 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar, Footer } from "../components";
+import SuspenseWrapper from "./SuspenseWrapper"; 
 
 const Home = lazy(() => import("../pages/Home"));
 const Projects = lazy(() => import("../pages/Projects"));
@@ -11,17 +12,10 @@ const SignUp = lazy(() => import("../pages/SignUp"));
 const AllProjects = lazy(() => import("../pages/AllProjects"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 
-const SuspenseWrapper = (Component) => (
-  <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-    <Component />
-  </Suspense>
-);
-
 const AppRouter = () => {
   return (
     <Router>
       <Navbar />
-
       <Routes>
         <Route path="/" element={SuspenseWrapper(Home)} />
         <Route path="/projects" element={SuspenseWrapper(Projects)} />
@@ -32,7 +26,6 @@ const AppRouter = () => {
         <Route path="/all-projects" element={SuspenseWrapper(AllProjects)} />
         <Route path="*" element={SuspenseWrapper(NotFound)} />
       </Routes>
-
       <Footer />
     </Router>
   );

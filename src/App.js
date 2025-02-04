@@ -30,8 +30,7 @@ export default App;
 //npm install --save-dev jest @testing-library/react @testing-library/jest-dom
 //npm install react-scripts@latest
 
-// performance
-//
+
 
 
 

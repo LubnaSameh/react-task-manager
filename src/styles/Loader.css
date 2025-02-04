@@ -1,0 +1,58 @@
+/* Loader Overlay */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3f91ee, #860dd6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-in-out;
+  }
+  
+  /* Smooth Circular Color Spinner */
+  .loader {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #ebee26, 
+      #ff6ec4, 
+      #7873f5, 
+      #42e695, 
+      #b6b83b, 
+      #dde01a, 
+      #50c9c3, 
+      #ebee26
+    );
+    mask: radial-gradient(farthest-side, transparent calc(100% - 8px), black 0);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), black 0);
+    animation: spin 1.5s linear infinite, pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 25px rgba(80, 201, 195, 0.7);
+  }
+  
+  /* Continuous Rotation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Pulse Wave Motion */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 20px rgba(74, 144, 226, 0.7);
+    }
+    50% {
+      transform: scale(1.15); 
+      box-shadow: 0 0 40px rgb(142, 80, 201); 
+    }
+  }
+  
