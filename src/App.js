@@ -1,6 +1,5 @@
 //npm install -D tailwindcss postcss autoprefixer
 //npm install -D tailwindcss@3.3.3 postcss@8.5.1 autoprefixer@10.4.20
-
 //npx tailwindcss init
 //npm install react-router-dom
 //npm install framer-motion

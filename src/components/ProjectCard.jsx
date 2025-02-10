@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MdDelete, MdEdit } from "react-icons/md";
 
-// ✅ دالة لتقصير النصوص الطويلة
+// لة لتقصير النصوص الطويلة
 const truncateText = (text, maxLength) => {
   if (!text) return "No data available";
   return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
@@ -85,8 +85,8 @@ const ProjectCard = ({ index, project, onDelete, onEdit }) => {
           <p
             className="text-md text-gray-400 mb-4"
             style={{
-              whiteSpace: "pre-wrap", // ✅ دعم فواصل الأسطر
-              wordBreak: "break-word", // ✅ تجنب تجاوز النص للحاوية
+              whiteSpace: "pre-wrap", //  دعم فواصل الأسطر
+              wordBreak: "break-word", //  تجنب تجاوز النص للحاوية
             }}
           >
             {truncateText(description, 100)}

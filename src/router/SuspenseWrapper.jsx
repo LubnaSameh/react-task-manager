@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from "react";
-import { Loader } from "../components"; // ✅ Adjust path based on location
+import { Loader } from "../components"; 
 
 const SuspenseWrapper = (Component) => {
   const [showLoader, setShowLoader] = useState(true);

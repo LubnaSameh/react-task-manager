@@ -1,4 +1,3 @@
-// context/ProjectContext.js
 import React, { createContext, useContext, useState, useEffect } from "react";
 import {
   getProjectsFromLocalStorage,
@@ -14,8 +13,6 @@ export const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
   const { tasks, setTasks } = useTasks();
 
-  // بمجرد بدء التطبيق، نجلب المشاريع من السيرفر + نقرأ من Local Storage
-  // ثم ندمج الاثنين ونحفظهم في الحالة والـ Local Storage
   useEffect(() => {
     const localProjects = getProjectsFromLocalStorage();
 
@@ -23,9 +20,6 @@ export const ProjectProvider = ({ children }) => {
       try {
         // 1) جلب 5 مشاريع من JSONPlaceholder
         const apiData = await fetchApiProjects(); 
-        // apiData = [{ id, title, body }, ...] (5 عناصر مفترضاً)
-
-        // 2) حوّل `body` إلى `description` كي يوافق تصميمك
         const mappedData = apiData.map((item) => ({
           id: item.id,
           title: item.title,

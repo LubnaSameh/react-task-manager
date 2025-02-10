@@ -4,7 +4,6 @@
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";
 
 // نضيف بارامتر ?_limit لتحديد العدد
-
 export const getProjects = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/posts?_limit=5`); 
@@ -15,7 +14,6 @@ export const getProjects = async () => {
     throw error;
   }
 };
-
 
 export const addProject = async (newProject) => {
   try {

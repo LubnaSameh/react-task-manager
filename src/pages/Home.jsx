@@ -35,13 +35,13 @@ const Home = () => {
       <div className="container mx-auto px-6 pt-10 text-center relative z-10">
         {/* Animated Heading */}
         <motion.h1
-  initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  className="text-5xl font-bold font-heading mb-6"
->
-  Welcome to <span className="text-yellow-400">TaskFlow</span>
-</motion.h1>
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-5xl font-bold font-heading mb-6"
+        >
+          Welcome to <span className="text-yellow-400">TaskFlow</span>
+        </motion.h1>
 
 
         {/* Description */}

@@ -10,7 +10,7 @@ module.exports = {
         darkBg: '#2d3748',
       },
       fontFamily: {
-        sans: ['Jost', 'sans-serif'], // النصوص
+        sans: ['Jost', 'sans-serif'],
       },
     },
   },

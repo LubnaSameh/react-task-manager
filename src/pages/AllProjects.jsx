@@ -29,8 +29,6 @@ function ProjectItem({ project, tasks, index, toggleTaskStatus }) {
                   z-10 relative // نجعلها نسبية وعليها z-10 لتكون فوق خلفية الدوائر
                   `}
     >
-      {/* لا نضع الدوائر هنا. نضعها في العنصر الأب (AllProjects) */}
-      {/* الجزء العلوي: عنوان + وصف */}
       <div className="mb-4 ">
         {/* عنوان المشروع */}
         <div className="relative">
@@ -78,28 +76,22 @@ function ProjectItem({ project, tasks, index, toggleTaskStatus }) {
       {/* الجزء الأوسط: زر Details + المهام */}
       <div className="mb-4 flex-1">
       <div className="flex flex-col text-center sm:flex-row sm:gap-4 sm:justify-between mb-4">
-  {/* زر View Details */}
-  <Link
-    to={`/projects/${project.id}`}
-    className="inline-block px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-full shadow transition duration-300 mb-3 sm:mb-0"
-  >
-    View Details
-  </Link>
 
-  {/* زر View Tasks */}
-  <Link
-    to={`/projects/${project.id}/tasks`}
-    className="inline-block px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded-full shadow transition duration-300"
-  >
-    View Tasks
-  </Link>
-</div>
+      <Link
+        to={`/projects/${project.id}`}
+        className="inline-block px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white rounded-full shadow transition duration-300 mb-3 sm:mb-0"
+      >
+        View Details
+      </Link>
 
+      <Link
+        to={`/projects/${project.id}/tasks`}
+        className="inline-block px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded-full shadow transition duration-300"
+      >
+        View Tasks
+      </Link>
+    </div>
 
-
-
-
-        {/* قائمة المهام */}
         {tasks.length > 0 ? (
           <div>
             <h3 className="text-lg font-semibold mb-2">Tasks:</h3>

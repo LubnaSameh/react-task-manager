@@ -112,52 +112,42 @@ const Tasks = () => {
 
         {/* زر العودة مع شريط البحث */}
         <div className="relative mb-6 w-full min-h-[60px]">
-  {/* زر العودة */}
-  <motion.button
-    whileHover={{ scale: 1.05 }}
-    transition={{ duration: 0.3 }}
-    onClick={handleGoBack}
-    /*
-      - افتراضياً (mobile): 'block mx-auto mb-4' => يظهر أسفل البحث في سطر منفصل
-      - في الشاشات المتوسطة وأعلى (md:): 'absolute left-2 top-1/2 -translate-y-1/2' => يرجع لوضعه السابق
-    */
-    className="
-      block mx-auto mb-4
-      px-4 py-2 bg-gray-800 text-white font-medium rounded-full shadow-lg 
-      hover:bg-gray-700 transition duration-300
-      /* عند الشاشة md يصبح مطلق */
-      md:absolute
-      md:left-4
-      md:top-1/2
-      md:-translate-y-1/2 
-    "
-  >
-    Back to Projects
-  </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            onClick={handleGoBack}
+            className="
+              block mx-auto mb-4
+              px-4 py-2 bg-gray-800 text-white font-medium rounded-full shadow-lg 
+              hover:bg-gray-700 transition duration-300
+              /* عند الشاشة md يصبح مطلق */
+              md:absolute
+              md:left-4
+              md:top-1/2
+              md:-translate-y-1/2 
+            "
+          >
+            Back to Projects
+          </motion.button>
 
-  {/* شريط البحث في المنتصف */}
-  <motion.div
-    initial={{ opacity: 0, y: -50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    /* نجعل ارتفاع الحاوية أكبر كي لا يتداخل العنصران */
-    className="mx-auto w-full max-w-md h-full flex items-center justify-center z-10"
-  >
-    <SearchBar
-      placeholder="Search Tasks by Title..."
-      value={search}
-      onChange={(e) => {
-        setSearch(e.target.value);
-        setCurrentPage(1);
-      }}
-    />
-  </motion.div>
-</div>
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            /* نجعل ارتفاع الحاوية أكبر كي لا يتداخل العنصران */
+            className="mx-auto w-full max-w-md h-full flex items-center justify-center z-10"
+          >
+            <SearchBar
+              placeholder="Search Tasks by Title..."
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
+            />
+          </motion.div>
+       </div>
 
-
-
-
-        {/* عرض المهام */}
         <div className="grid pt-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {currentTasks.map((task, index) => (
             <TaskCard

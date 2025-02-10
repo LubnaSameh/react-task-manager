@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MdDelete, MdEdit} from "react-icons/md";
 
-// ✅ دالة لتقصير النصوص الطويلة
+// لة لتقصير النصوص الطويلة
 const truncateText = (text, maxLength) => {
   if (!text) return "No description available";
   return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
